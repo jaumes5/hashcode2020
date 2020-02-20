@@ -27,10 +27,22 @@ def parser(path):
 
 
 def generate_output(library, books_score, D):
-    # resul = sorted(library.items, key=lambda a: a[1]["score_d"], reverse=True)
+    resul = sorted(library.items(), key=lambda a: a[1]["score_d"], reverse=True)
     d = 0
     stage = []
-    resul = library.items()
-    for i in resul.items():
-        d += i.number_D
-    pass
+    num_li = 0
+    lista = []
+    for i in resul:
+        d += i[1]["number_D"]
+        if d > D:
+            break
+        num_li += 1
+        tmp_d = D - d
+        tmp_d = min(i[1]["days"], tmp_d)
+        books = [str(i) for i in i[1]["books"][: tmp_d * i[1]["number_D"]]]
+        lista.append(((str(i[0]), str(len(books))), books))
+    with open("files/output.txt", "w") as file:
+        file.write(str(num_li) + "\n")
+        for i in lista:
+            file.write(" ".join(i[0]) + "\n")
+            file.write(" ".join(i[1]) + "\n")
