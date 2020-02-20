@@ -39,7 +39,7 @@ def generate_output(library, books_score, D, path):
         num_li += 1
         tmp_d = D - d
         tmp_d = min(i[1]["days"], tmp_d)
-        books = [str(i) for i in i[1]["books"][: tmp_d * i[1]["number_D"]]]
+        books = [str(i) for i in i[1]["books"][: tmp_d * i[1]["number_S"]]]
         lista.append(((str(i[0]), str(len(books))), books))
     with open(path, "w") as file:
         file.write(str(num_li) + "\n")
