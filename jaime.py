@@ -14,6 +14,7 @@ def parser(path):
         days = math.ceil(N / M)
         books_score_d = sum(books_score[i] for i in books) / days
         books = sorted(books, key=lambda a: books_score[a], reverse=True)
+        score = sum(books_score[i] for i in books) / (days + T)
         library[i] = {
             "number_B": N,
             "number_D": T,
@@ -21,13 +22,13 @@ def parser(path):
             "books": books,
             "score_d": books_score_d,
             "days": days,
-            "score": 0,
+            "score": score,
         }
     return B, L, D, books_score, library
 
 
 def generate_output(library, books_score, D, path):
-    resul = sorted(library.items(), key=lambda a: a[1]["score_d"], reverse=True)
+    resul = sorted(library.items(), key=lambda a: a[1]["score"], reverse=True)
     d = 0
     stage = []
     num_li = 0
