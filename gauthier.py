@@ -8,7 +8,7 @@ def score(libraries, books_score):
     for i in range(A):
         Y, K = [int(i) for i in data[1+2*i].split(" ")]
         books = [int(i) for i in data[2*(i+1)].split(" ")]
-        print(scanned_books)
+        # print(scanned_books)
         for book in books:
             if book not in scanned_books:
                 score += books_score[book]
