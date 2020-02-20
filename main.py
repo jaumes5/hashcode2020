@@ -1,3 +1,6 @@
+from jaime import *
+
+
 if __name__ == "__main__":
-    print('HOLA')
+    a,b,c,d,e = parser('files/a_example.txt')
     pass
